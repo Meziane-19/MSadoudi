@@ -1,0 +1,449 @@
+/* Menu */
+
+/* Initialization */
+
+:root {
+  --padd: 0 3%;
+  --color: rgb(49, 87, 44);
+  --fill: rgb(19, 42, 19);
+}
+
+@font-face {
+  font-family: raleway;
+  src: url("../Typefaces/Raleway-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: against;
+  src: url("../Typefaces/against\ regular.ttf");
+}
+@font-face {
+  font-family: poppins;
+  src: url("../Typefaces/Poppins-Regular.ttf");
+}
+@font-face {
+  font-family: ubuntu;
+  src: url("../Typefaces/Ubuntu-Light.ttf");
+}
+@font-face {
+  font-family: emotions;
+  src: url("../Typefaces/emotions.ttf");
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(170, 170, 170, 0.15);
+}
+
+/* 1. Header Styling */
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--padd);
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  margin-bottom: 3%;
+  z-index: 5;
+
+  /* glassMorphism effect */
+  background: rgba(255, 255, 255, 0.2);
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  box-shadow: 0 4px 30px rgba(175, 175, 175, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-bottom: 2px solid rgba(114, 114, 114, 0.127);
+}
+
+.navigation > h1 {
+  cursor: pointer;
+  font-size: 2.8rem;
+  letter-spacing: 1px;
+  font-family: emotions;
+  color: black;
+}
+
+header nav {
+  width: 355px;
+  padding: 0.5% 1%;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.15rem;
+  font-family: raleway;
+  font-weight: 700;
+}
+
+header nav ul li {
+  padding: 2.5% 4%;
+  border-radius: 5px 10px 5px 10px;
+  transition: 0.2s all ease-in-out;
+  color: grey;
+}
+
+header nav ul li:nth-of-type(2) {
+  position: relative;
+  bottom: 3px;
+  border: 3px solid var(--color);
+  color: var(--color);
+}
+
+header nav ul li a {
+  text-decoration: none;
+}
+
+/* 1.2 header hover effect */
+
+header nav ul li:hover {
+  cursor: pointer;
+  font-weight: bolder;
+  transform: translateY(-6px);
+}
+
+header nav ul li:nth-of-type(2):hover {
+  border: 3px solid transparent;
+  transform: translateY(-6px);
+  background-color: transparent;
+}
+
+/* 1.3 "visited" state */
+
+header nav ul li a:visited {
+  text-decoration: none;
+  color: var(--color);
+}
+
+header nav ul li:hover a:visited {
+  text-decoration: none;
+  color: var(--color);
+}
+
+/* 2. section 1 : menu switching buttons styling */
+
+.hidden {
+  display: none;
+}
+
+.title {
+  font-size: 5rem;
+  font-family: against;
+  font-weight: 900;
+  color: #292929;
+  padding-top: 8rem;
+}
+
+.menu__switcher {
+  display: flex;
+  justify-content: center;
+  width: 70%;
+}
+
+.food__types__navigation {
+  margin-top: 13.5rem;
+  margin-bottom: 4rem;
+  width: 40rem;
+}
+
+.food__types__navigation ul {
+  list-style: none;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.food__types__navigation ul li button {
+  cursor: pointer;
+  border: 1.5px solid var(--color);
+  background-color: var(--fill);
+  color: white;
+  border-radius: 2px;
+  font-size: 1.2rem;
+  font-family: raleway;
+  padding: 12px 20px;
+  transition: 0.2s all ease-in;
+}
+
+/* 2.2 floating blurred blob */
+.blob {
+  position: absolute;
+  top: 8%;
+  left: 35%;
+  opacity: 0.5;
+  width: 370px;
+  aspect-ratio: 1/1;
+  filter: blur(50px);
+  z-index: -1;
+  border-radius: 20% 71% 47% 70% / 81% 15% 22% 54%;
+
+  animation: animate 20s infinite alternate forwards;
+  background: linear-gradient(
+    47deg,
+    var(--color) 21%,
+    rgba(219, 195, 39, 1) 67%,
+    rgba(49, 87, 44) 81%
+  );
+
+  box-shadow: inset 50px 50px 17px 0px var(--color),
+    inset 100px 100px 17px 0px rgba(49, 87, 446888);
+}
+
+/* 2.3 buttons hover effect */
+
+.food__types__navigation ul li button:hover {
+  background-color: rgb(79, 119, 45);
+  box-shadow: 0 0 10px rgb(49, 87, 44), 0px 0px 10px rgb(49, 87, 44) inset;
+}
+
+/* 3. section 2 : actual menu styling */
+
+/* 3.1 whole menu styling */
+.menu {
+  width: 85%;
+  height: 480px;
+  background-image: url("../Images/patern1.jpg");
+  background-size: 17%;
+  box-shadow: 0 0 60px rgb(237, 19, 19, 0.2);
+  border: 1.5px solid var(--color);
+  padding: 1.5% 2% 2% 3%;
+  margin-bottom: 5%;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+/* 3.2 dish cards styling */
+
+.dish__card {
+  border-radius: 5px;
+  height: 325px;
+  background-color: rgb(218, 218, 218);
+  border: 1px solid rgb(144, 144, 144);
+  margin-bottom: 2%;
+  display: flex;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  scroll-margin-top: 20px;
+}
+
+.dish__card figure {
+  height: 100%;
+  width: 275px;
+  overflow: hidden;
+}
+
+.dish__card figure img {
+  height: 100%;
+  width: auto;
+  transition: 0.4s all;
+}
+
+.dish__card .price__section {
+  flex-grow: 1;
+  margin: 4% 0;
+  padding: 1% 0 3% 0;
+  border-left: 1px solid rgb(96, 96, 96);
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dish__card .ingredients__section {
+  width: 43%;
+  background-color: rgb(237, 237, 237);
+  padding: 5% 3% 0 2%;
+  border-left: 1.3px solid var(--color);
+}
+
+.dish__card .ingredients__section h2 {
+  font-size: 1.4rem;
+  font-family: against;
+  color: var(--color);
+  letter-spacing: 0.5px;
+  margin-bottom: 5%;
+}
+.dish__card .ingredients__section ul {
+  margin-top: 0.7rem;
+  font-size: 0.9rem;
+  font-family: poppins;
+  letter-spacing: -0.5px;
+  line-height: 125%;
+  color: rgb(79, 79, 79);
+  padding-left: 7%;
+
+  counter-reset: li;
+  list-style-type: none;
+}
+
+.dish__card .price__section button:nth-of-type(2) {
+  padding: 4%;
+  color: white;
+  background-color: rgb(49, 87, 44);
+  border: 2px solid var(--fill);
+  border-radius: 3px;
+}
+
+.dish__card .price__section .price__part {
+  color: rgb(72, 72, 72);
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  font-size: 1.7rem;
+}
+
+.price {
+  letter-spacing: -2px;
+  font-family: against;
+}
+
+.actual__price {
+  font-size: 1.2rem;
+  font-family: raleway;
+}
+
+.ingredients__section ul li::before {
+  counter-increment: li;
+  content: counter(li) ". ";
+}
+
+.ingredients__section span {
+  font-family: raleway;
+  font-size: 0.8rem;
+  text-decoration: underline var(--color) 0.5px;
+  color: rgb(108, 108, 108);
+  padding-left: 3%;
+}
+
+.dish__card .price__section .btns {
+  width: 180px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dish__card .price__section button {
+  cursor: pointer;
+  padding: 6%;
+  border-radius: 3px;
+  transition: 0.3s all;
+  font-family: ubuntu;
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+
+.dish__card .price__section button:nth-of-type(1) {
+  border: 1px solid var(--color);
+  color: var(--color);
+  font-weight: 900;
+}
+
+/* 3.3 scrollbar styling */
+
+.menu::-moz-scrollbar {
+  width: 20px;
+}
+.menu::-moz-scrollbar-button {
+  display: none;
+}
+
+.menu::-moz-scrollbar-track {
+  background-color: #eee;
+}
+.menu::-moz-scrollbar-thumb {
+  background-color: var(--fill);
+}
+.menu::-webkit-scrollbar {
+  width: 15px;
+}
+.menu::-webkit-scrollbar-button {
+  display: none;
+}
+
+.menu::-webkit-scrollbar-track {
+  background-color: #eee;
+}
+.menu::-webkit-scrollbar-thumb {
+  background-color: var(--fill);
+}
+
+/* 3.4 dish Card buttons hover effect */
+
+.dish__card figure img:hover {
+  transform: scale(1.05);
+}
+
+.dish__card .price__section button:nth-of-type(1):hover {
+  box-shadow: 0 0 5px rgb(49, 87, 44), 0px 0px 5px rgb(49, 87, 44) inset;
+}
+
+.dish__card .price__section button:nth-of-type(2):hover {
+  box-shadow: 0 0 10px rgb(49, 87, 44), 0px 0px 10px rgb(49, 87, 44) inset;
+}
+
+.price__section:hover .actual__price {
+  color: var(--color);
+  transform: scale(1.1) translateY(-2px);
+  transition: 0.2s all;
+}
+
+/* 4. Footer styling */
+
+footer {
+  width: 100%;
+  height: 40px;
+  font-family: poppins;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  color: rgb(212, 178, 115);
+  background-color: rgb(29, 21, 21);
+  font-size: 0.8rem;
+  font-weight: 100;
+  position: relative;
+  margin-top: 6rem;
+  border-top: 2px solid rgb(212, 178, 115);
+}
+
+
+/* extra: animations  */
+
+@keyframes animate {
+  0%,
+  100% {
+    border-radius: 60% 40% 30% 70% / 100% 85% 92% 74%;
+  }
+  50% {
+    border-radius: 20% 71% 47% 70% / 81% 15% 22% 54%;
+    rotate: 120deg;
+    scale: 2;
+    filter: blur(45px);
+    transform: translateX(-100px);
+  }
+
+  80% {
+    border-radius: 20% 71% 47% 70% / 81% 15% 22% 54%;
+    rotate: -180deg;
+    scale: 2;
+    filter: blur(40px);
+    transform: translateX(-40%);
+  }
+}
